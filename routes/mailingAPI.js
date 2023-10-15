@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 });
 
 router.post('/', (req, res) => {
-    const email = req.body.Email;
+    const email = req.body.email;
     const customMessage = req.body.customMessage;
 
     // Send the verification email
