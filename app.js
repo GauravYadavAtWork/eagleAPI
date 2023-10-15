@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import studentDetailsAPI from "./routes/studentDetailsAPI.js";
 import mailAPI from "./routes/mailingAPI.js";
 import iotController from "./routes/iotControllerAPI.js"
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -26,7 +28,7 @@ app.use("/device",iotController);
 
 
 //listening for requests
-app.listen(port, () => {
+app.listen(process.env.PORT||port, () => {
     console.log(`App listening of port ${port}`);
 });
 
