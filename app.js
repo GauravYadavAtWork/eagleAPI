@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //defining the password checker middleware
 const checkPassword = (req, res, next) => {
-    const expectedPassword = 'hehePassword'; // Password for requests
+    const expectedPassword = process.env.apiPassword; // Password for requests
     const providedPassword = req.headers.authorization; // The password is sent in the authorization header
     if (!providedPassword || providedPassword !== expectedPassword) {
         return res.status(401).json({ message: 'Unauthorized' });
