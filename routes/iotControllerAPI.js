@@ -35,6 +35,9 @@ const Device = iotDbConnection.model("Device", iotDeviceSchema);
 
 //handling get request
 router.get('/', (req, res) => {
+    if (!req.query.key || !req.query.value) {
+        return res.status(400).json({ message: 'Bad Request: Missing query parameters' });
+    }
     const findParameter = req.query.key;
     const findValue = req.query.value;
 
