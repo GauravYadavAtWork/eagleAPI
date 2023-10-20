@@ -11,6 +11,14 @@ const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const corsOptions = {
+  origin: 'http://localhost:3000', // Replace with your frontend's URL
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
+
+
 //defining the password checker middleware
 const checkPassword = (req, res, next) => {
     const expectedPassword = process.env.apiPassword; // Password for requests
