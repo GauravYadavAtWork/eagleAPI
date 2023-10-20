@@ -4,10 +4,11 @@ import studentDetailsAPI from "./routes/studentDetailsAPI.js";
 import mailAPI from "./routes/mailingAPI.js";
 import iotController from "./routes/iotControllerAPI.js"
 import dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
