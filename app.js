@@ -30,7 +30,7 @@ const checkPassword = (req, res, next) => {
     next();   //if  Password is correct, proceed to the next middleware or route
 };
 //using middlewares
-app.use('/', checkPassword);
+// app.use('/', checkPassword);
 app.use("/student-details",studentDetailsAPI);
 app.use("/mail",mailAPI);
 app.use("/device",iotController);
