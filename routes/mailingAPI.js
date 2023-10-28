@@ -19,20 +19,23 @@ const transporter = nodemailer.createTransport({
 router.post('/', (req, res) => {
     const email = req.body.email;
     const customMessage = req.body.customMessage;
-
+    console.log(req.body);
+    if(req.body.email=="" || req.body.customMessage==""){
+        return res.status(400).json({message:"Req Body Missing"});
+    }
     // Send the verification email
     const mailOptions = {
         from: process.env.EMAILID,
         to: email,
         subject: 'Welcome to EagleAPIs - Email Services',
-        text:`This is a Api test . This is the custom message ${customMessage}`,
+        text:`This is a Api test .  ${customMessage}`,
     };
 
     // Send the email with the customized content
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.error('Error sending email:', error);
-            res.status(500).json({message:"Error Sending Mail"});
+            res.status(500).json({message:"Error Sending1 Mail"});
 
         } else {
             res.status(200).json({message:"Email Sent Succesfully"});
