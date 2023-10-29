@@ -5,12 +5,9 @@ import mailAPI from "./routes/mailingAPI.js";
 import iotController from "./routes/iotControllerAPI.js"
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { createServer } from 'http';
-import chatappCode from './routes/chatapp.js';
 dotenv.config();
 
 const app = express();
-const server = createServer(app);
 const port = 8080;
 
 
@@ -24,7 +21,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 //listening for requests
-server.listen(process.env.PORT||port, () => {
+app.listen(process.env.PORT||port, () => {
     console.log(`App listening of port ${port}`);
 });
 
@@ -43,6 +40,6 @@ app.use('/', checkPassword);
 app.use("/student-details",studentDetailsAPI);
 app.use("/mail",mailAPI);
 app.use("/device",iotController);
-chatappCode(server);
+
 
 
